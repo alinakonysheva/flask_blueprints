@@ -4,6 +4,7 @@ from flask_htmlmin import HTMLMIN
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_compress import Compress
 
+
 db = SQLAlchemy()
 
 htmlmin = HTMLMIN()
@@ -19,7 +20,6 @@ def create_app(config=None):
     db.init_app(app)
     # htmlmin.init_app(app)
     compress.init_app(app)
-
     do_register_blueprint(app)
 
     do_register_error_handlers(app)

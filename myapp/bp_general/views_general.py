@@ -1,11 +1,13 @@
 from flask import render_template, abort, redirect, flash, url_for, current_app, Blueprint
 from myapp import db
+from bp_general.controller_general import ControllerBook
 
 bp_general_app = Blueprint('bp_general', __name__,  cli_group="db")
 
 @bp_general_app.route('/')
 def do_home():
-    return render_template('general/home.html', name='Kristof')
+    controller = ControllerBook(db.session)
+    return render_template('general/home.html', name='some name', ids=controller.get_all_ids())
 
 
 def do_not_found(error):
