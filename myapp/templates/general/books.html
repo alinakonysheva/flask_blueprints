@@ -1,0 +1,13 @@
+{% extends 'index_base.html' %}
+
+
+{% block title_block %}Books{% endblock %}
+{% block main_content %}
+
+<h1>Books</h1>
+
+<p>
+{% for book in books %}
+<li >{{ book.id }} - {{book.book_title}} - {{book.author_last_name}}</li> {% endfor %}
+</p>
+{% endblock %}
