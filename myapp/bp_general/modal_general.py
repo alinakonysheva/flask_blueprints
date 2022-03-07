@@ -30,6 +30,7 @@ class Book(db.Model):
     def wishlists(cls):
         return relationship('WishlistBook', back_populates='book')
 """
+
     # wishlists = relationship('WishlistBook', back_populates='book')
 
     @hybrid_property
@@ -263,6 +264,7 @@ class AudioBook(Book):
 
         self._duration_seconds = value
 
+
 class EBook(Book):
     __tablename__ = "T_EBOOK"
 
@@ -271,6 +273,7 @@ class EBook(Book):
     id = Column(Integer, ForeignKey('T_Book.id'), primary_key=True)
     __mapper_args__ = {'polymorphic_identity': 'T_EBOOK'}
     __table_args__ = {'extend_existing': True}
+
 
 class PaperBook(Book):
     __tablename__ = "T_PAPER_BOOK"

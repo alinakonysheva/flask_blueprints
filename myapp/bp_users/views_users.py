@@ -26,7 +26,7 @@ def do_my_profile():
     abort(404)
 
 
-@bp_users.route('/user', defaults={'user_id':0}, methods=['GET', 'POST'])
+@bp_users.route('/user', defaults={'user_id': 0}, methods=['GET', 'POST'])
 @bp_users.route('/user/<int:user_id>', methods=['GET', 'POST'])
 def do_user(user_id):
     form = ProfileForm()
@@ -53,7 +53,6 @@ def do_user(user_id):
         return render_template('users/myprofile.html', form=form, user=user)
 
     abort(404)
-
 
 
 @bp_users.route('/users')

@@ -1,7 +1,7 @@
 from flask import current_app
 from flask.cli import with_appcontext
 from myapp import db
-from . import bp_general
+import bp_general
 
 
 @bp_general.cli.command("create-db")
