@@ -36,7 +36,7 @@ def do_user(user_id):
     else:
         user = db.session.query(User).get(user_id)
         if user is None:
-            flash('gebruiker bestaat niet')
+            flash('user does not exist')
 
     if user:
         if form.validate_on_submit():
