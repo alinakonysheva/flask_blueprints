@@ -18,6 +18,7 @@ def create_app(config=None):
     app.config.from_object('configuration.BaseConfiguration')
 
     db.init_app(app)
+
     # htmlmin.init_app(app)
     compress.init_app(app)
     do_register_blueprint(app)

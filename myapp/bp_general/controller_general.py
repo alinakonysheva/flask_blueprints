@@ -38,20 +38,20 @@ class ControllerAudioBook:
         else:
             raise ValueError('Title should be a string and length between 1 and 200 symbols')
 
-        if type(reader_first_name) == str and 0 < len(reader_first_name) < 100:
-            audiobook.reader_first_name = reader_first_name
+        if  0 < len(reader_first_name) < 100:
+            audiobook.reader_first_name = str(reader_first_name)
         else:
             raise ValueError('First name of author should be a string and length between 1 and 100 symbols')
 
-        if type(reader_last_name) == str and 0 < len(reader_last_name) < 100:
-            audiobook.reader_last_name = reader_last_name
+        if 0 < len(reader_last_name) < 100:
+            audiobook.reader_last_name = str(reader_last_name)
         else:
             raise ValueError('Middle name of author should be a string and length between 1 and 100 symbols')
 
-        if type(reader_middle_name) == str and 0 < len(reader_middle_name) < 100:
-            audiobook.reader_middle_name = reader_middle_name
+        if 0 < len(reader_middle_name) < 100:
+            audiobook.reader_middle_name = str(reader_middle_name)
         else:
-            raise ValueError('Last name of author should be a string and length between 1 and 100 symbols')
+            raise ValueError('Middle name of author should be a string and length between 1 and 100 symbols')
 
         if type(duration_hours) == int and duration_hours >= 0:
             audiobook.duration_hours = duration_hours
@@ -570,19 +570,19 @@ class ControllerPaperBook:
         if cover in covers.keys():
             paper_book.cover = cover
         else:
-            raise ValueError(f'Cover should be an integer and in {covers.keys()}')
+            raise ValueError(f'Cover should be in {covers.keys()}')
 
-        if type(length) == float and 0 <= length <= 300:
+        if 0 <= length <= 300:
             paper_book.length = length
         else:
             raise ValueError('length of a paper book should be a float and between 0 and 300')
 
-        if type(width) == float and 0 <= width <= 300:
+        if 0 <= width <= 300:
             paper_book.width = width
         else:
             raise ValueError('width of a paper book should be a float and between 0 and 300')
 
-        if type(weight) == float and 0 <= weight <= 10000:
+        if 0 <= weight <= 10000:
             paper_book.weight = weight
         else:
             raise ValueError('weight of a paper book should be a float and between 0 and 10000')
@@ -592,10 +592,10 @@ class ControllerPaperBook:
         else:
             raise ValueError('pages of a paper book should be an int and between 0 and 23675')
 
-        if type(isbn) == int and len(str(isbn)) == 13:
+        if len(isbn) == 13:
             paper_book.isbn = isbn
         else:
-            raise ValueError('isbn of a paper book should be an int and the number of digits == 13')
+            raise ValueError('isbn of a paper book should be the number of digits with the length == 13')
 
         if type(pic) == str and 0 < len(title) < 400:
             paper_book.pic = pic
@@ -692,10 +692,10 @@ class ControllerPaperBook:
                 else:
                     raise ValueError('pages of a paper book should be an int and between 0 and 23675')
 
-                if type(isbn) == int and len(str(isbn)) == 13:
+                if len(isbn) == 13:
                     paper_book.isbn = isbn
                 else:
-                    raise ValueError('isbn of a paper book should be an int and the number of digits == 13')
+                    raise ValueError('isbn of a paper book should be with 13 symbols long')
 
                 if type(pic) == str and 0 < len(title) < 400:
                     paper_book.pic = pic

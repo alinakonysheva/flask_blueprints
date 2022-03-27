@@ -278,7 +278,7 @@ class EBook(Book):
 class PaperBook(Book):
     __tablename__ = "T_PAPER_BOOK"
     # 1 or 2
-    _cover = Column('F_COVER', Integer)
+    _cover = Column('F_COVER', String(1))
     # in cm
     _length = Column('F_LENGTH', Integer)
     # in cm
@@ -286,14 +286,14 @@ class PaperBook(Book):
     # in g
     _weight = Column('F_WEIGHT', Integer)
     _pages = Column('F_PAGES', Integer)
-    _isbn = Column('F_ISBN', Integer)
+    _isbn = Column('F_ISBN', String(15))
     __mapper_args__ = {'polymorphic_identity': 'T_PAPER_BOOK'}
     __table_args__ = {'extend_existing': True}
     id = Column(Integer, ForeignKey('T_Book.id'), primary_key=True)
 
     @hybrid_property
-    def cover(self) -> int:
-        return int(self._cover)
+    def cover(self):
+        return self._cover
 
     @cover.setter
     def cover(self, value) -> None:
@@ -364,12 +364,12 @@ class PaperBook(Book):
 
     # isbn
     @hybrid_property
-    def isbn(self) -> int:
-        return int(self._isbn)
+    def isbn(self) -> str:
+        return self._isbn
 
     @isbn.setter
-    def isbn(self, value: int) -> None:
-        if len(str(value)) != 13:
+    def isbn(self, value: str) -> None:
+        if len(value) != 13:
             raise ValueError('the isbn of the book can not be longer than 13 digit')
 
         self._isbn = value
